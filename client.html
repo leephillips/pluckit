@@ -1,0 +1,33 @@
+<!-- Sourced locally; get scripts and documentation from htmx.org: -->
+<script src="/htmx.js"> </script>
+<script src="/ws.js"> </script>
+<!-- This syncs the slider and the number input for the pluck position: -->
+<script>
+ function updateTextInput1(val) {
+   document.getElementById('poss').value = val;
+   document.getElementById('posn').value = val;
+ }
+</script>
+<!-- Put this form where you want the client to appear on your page: -->
+<form data-hx-ext="ws" data-ws-send data-ws-connect="wss://pluton.lee-phillips.org/pluckit/">
+  <div style='container-type:size;position:relative;width:95%;height:700px;'>
+      <img style='left:0px; top:0px; position:relative; width:100%;' src='guitar.svg' alt=''>
+      <button style='cursor: pointer; box-shadow: 0.6cqw 0.6cqw 0px #744;left:2cqw; top:17.6cqw; position:absolute; width:10cqw; height:3.4cqw; font-size:2.8cqw; line-height:0px;padding:0px;' type='submit'>Pluck</button>
+      <input style='left:24cqw; top:18.6cqw; width:37cqw; position:absolute;height:2cqw; line-height:0px;' value="250" onchange="updateTextInput1(this.value)" type="range" name="poss" id="poss" min="100" max="500">
+      <input style='left:50cqw; top:25cqw; position:absolute; width:8cqw; font-size:2.2cqw;padding:0.2cqw;' value="250" onkeyup="updateTextInput1(this.value)" onchange="updateTextInput1(this.value)" type='number' name='posn' id="posn" min="100" max="500">
+      <label for='posn' style='top:25.7cqw; left:58.5cqw; font-size:2.4cqw; position:absolute;'>mm pluck position</label>
+      <div style='position:absolute; left:0px; top:40cqw; width:100%; height:35cqw;'>
+          <img id="sgram" style='position:absolute; width:100%; height:100%' alt=''>
+      </div>
+      <div style='position:absolute; left:0px; top:75cqw; width:60cqw; height:26cqw;'>
+          <img id="spec" style='position:absolute; width:100%; height:100%' alt=''>
+      </div>
+      <div style="position:absolute; font-size:0.2cqw; padding:0px;opacity:0.5;left:31cqw; top:76.5cqw; height:10cqw; width:68cqw;overflow:clip">
+          <audio controls style='position:absolute; top:0px;left:0px;height:100%;' id="snd"></audio>
+      </div>
+      <input type="hidden" value="0" id="ft" name="ft">
+      <div data-hx-ext="ws" data-ws-connect="wss://pluton.lee-phillips.org/pluckers/" style="position:absolute; font-size:2cqw; padding:1cqw;left:61cqw; top:90cqw; width:30cqw;overflow:clip">
+           There are <span id="howmany">???</span> people plucking around with this.
+       </div>
+  </div>
+</form>

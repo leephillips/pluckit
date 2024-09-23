@@ -91,13 +91,16 @@ function startpluck()
     end
 end
 
-# See the file webform.html in this package for the client side.
+# See the file client.html in this package for the client side.
 #
 # To run the server, import this file and run
 #     streamhowmany(); startpluck()
 # in that order. streamhowmany() is non-blocking and startpluck() is blocking.
 # This keeps the server functions running when started in a non-interactive
-# context, for example with systemd-run.
+# context, for example with systemd-run. If you want to run this from a REPL
+# and keep using the REPL while the server functions are running, change the
+# WebSockets.listen() function in startpluck() to the non-blocking version,
+# WebSockets.listen!().
 
 
 end # module pluckit
