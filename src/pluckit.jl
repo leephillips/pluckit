@@ -4,8 +4,8 @@ using HTTP, JSON, Plots, Base64, WAV
 
 export makesound, makesgram, startpluck, howmany, streamhowmany
 
-const PPORT = 8892
-const NPORT = 8891
+const PPORT = 8992
+const NPORT = 8991
 
 function partial(f0, n, B)
     return f0*n*sqrt(1 + B*n^2)
